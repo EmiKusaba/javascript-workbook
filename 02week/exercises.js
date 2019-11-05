@@ -37,13 +37,20 @@ console.log(carsInReverse);
 //Use the sort method to put the array carsInReverse into alphabetical order.
 //Based on the types of cars you used, predict which item in the array should be at index 0.
 //Use the following code to confirm or reject your prediction:
-//alert(carsInReverse.indexOf('yourPrediction'));
+//
 console.log(carsInReverse.sort());
-var yourPrediction = "Toyota";
+var yourPrediction = "BMW";
+// alert doesn't work with node, and it should be yourPrediction without quotes.
+//alert(carsInReverse.indexOf('yourPrediction'));
 console.log(carsInReverse.indexOf(yourPrediction));
 
 //slice
 //Use the slice method to remove Ford and Honda from the carsInReverse array and move them into a new array called removedCars.
-console.log(carsInReverse);
-var removedCars = (carsInReverse.slice(1));
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+// slice doesn't mutate the original array, so slice is not enough to remove Ford and Honda
+var removedCars = (carsInReverse.slice(1, 3));
 console.log(removedCars);
+
+// splice
+
+
