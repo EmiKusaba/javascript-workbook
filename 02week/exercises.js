@@ -51,6 +51,8 @@ console.log(carsInReverse.indexOf(yourPrediction));
 var removedCars = (carsInReverse.slice(1, 3));
 console.log(removedCars);
 
-// splice
+//splice
+//Use the splice method to remove the 2nd and 3rd items in the array carsInReverse and add Ford and Honda in their place.
 
-
+var removedCars = (carsInReverse.splice(1, 2,"Ford","Honda"));
+console.log(carsInReverse);
