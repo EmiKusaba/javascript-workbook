@@ -19,37 +19,50 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
+function movePiece(startStack, endStack) {
+  startStack = stacks[startStack];
+  endStack = stacks[endStack];
   endStack.push(startStack.pop());
-  console.log(startStack, endStack);
-  console.log(stacks[startStack]);
-
 }
 
-function isLegal() {
-  // Your code here
-  if (startStack[startStack.length - 1] < endStack[endStack.length -1]) {
-    return "Not an available move. Try again."
-  } else {
-    movePiece(); 
+function isLegal(startStack, endStack) {
+  startStack = stacks[startStack];
+  endStack = stacks[endStack];
+
+  // If startStack is empty, can't move from it
+  if(startStack.length == 0) {
+    return false;
   }
 
+  // Check that moving piece is smaller than 
+  // last piece on endStack
+
+  // If nothing on endStack, always ok to move
+  if(endStack.length == 0) {
+    return true;
+  }
+
+  const movingPiece = startStack[startStack.length - 1];
+  const lastPiece = endStack[endStack.length - 1];
+  return lastPiece > movingPiece;
 }
 
 function checkForWin() {
-  // Your code here
-  endStack.length === 4;
-
+  for(var key in stacks) {
+    if(stacks[key].length == 4) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
-  const cutOut = stacks.c.slice(0,4);
-  const addIn = stacks.a.concat(stacks.c);
-
-  console.log(startStack, endStack);
-  console.log(stacks[startStack]);
+  if(isLegal(startStack, endStack)) {
+    movePiece(startStack, endStack);
+    checkForWin();
+  } else {
+    console.log("Not an available move. Try again.")
+  }
 }
 
 
