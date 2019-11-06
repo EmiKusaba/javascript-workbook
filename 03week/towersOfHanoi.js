@@ -21,23 +21,38 @@ function printStacks() {
 
 function movePiece() {
   // Your code here
+  endStack.push(startStack.pop());
+  console.log(startStack, endStack);
+  console.log(stacks[startStack]);
 
 }
 
 function isLegal() {
   // Your code here
+  if (startStack[startStack.length - 1] < endStack[endStack.length -1]) {
+    return "Not an available move. Try again."
+  } else {
+    movePiece(); 
+  }
 
 }
 
 function checkForWin() {
   // Your code here
+  endStack.length === 4;
 
 }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
+  const cutOut = stacks.c.slice(0,4);
+  const addIn = stacks.a.concat(stacks.c);
 
+  console.log(startStack, endStack);
+  console.log(stacks[startStack]);
 }
+
+
 
 function getPrompt() {
   printStacks();
