@@ -34,7 +34,10 @@ header {
   padding: 20px 0 20px 0;
   margin-bottom: 40px;
 }
-
+.image1{
+  width: 40%;
+  height: auto;
+}
 .wrapper {
   min-height: 100%;
   margin-bottom: -100px;
@@ -77,7 +80,7 @@ header {
 .site__title {
   color: #0b0166;
   font-size: 3rem;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Shrikhand', cursive;
   font-weight: 200;
   max-width: 576px;
   padding-left: 20px
@@ -103,7 +106,7 @@ header {
 
 .main__form {
   padding: 40px;
-  border: 1px solid #d6cac2;
+  border: 1px solid #0b0166;
   border-radius: 4px;
 }
 
