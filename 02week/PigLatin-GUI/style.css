@@ -29,9 +29,9 @@ section,
 }
 
 header {
-  background: #f5f2f0;
-  border-bottom: 1px solid #f5f2f0;
-  padding: 100px 0 50px 0;
+  background: #a7e8f8;
+  border-bottom: 1px solid #0b0166;
+  padding: 20px 0 20px 0;
   margin-bottom: 40px;
 }
 
@@ -75,7 +75,7 @@ header {
 /* typography =============== */
 
 .site__title {
-  color: #848484;
+  color: #0b0166;
   font-size: 3rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
@@ -84,7 +84,7 @@ header {
 }
 
 .main__title {
-  color: #7e8e97;
+  color: #0b0166;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
 }
