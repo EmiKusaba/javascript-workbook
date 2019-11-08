@@ -34,8 +34,8 @@ function handleClick (event){
   square.textContent = Playturn;
   let squareCol = square.dataset.col;
   let squareRow = square.dataset.row;
-  console.log(squareCol, squareRow);
-  ticTactoe(squareCol, squareRow);
+  // console.log(squareCol, squareRow);
+  ticTactoe(squareRow, squareCol);
 }
 
 //
