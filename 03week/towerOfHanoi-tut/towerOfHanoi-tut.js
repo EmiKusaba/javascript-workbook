@@ -30,7 +30,7 @@ function isLegal(startStack, endStack) {
   endStack = stacks[endStack];
 
   // If startStack is empty, can't move from it
-  if(startStack.length == 0) {
+  if (startStack.length == 0) {
     return false;
   }
 
@@ -38,7 +38,7 @@ function isLegal(startStack, endStack) {
   // last piece on endStack
 
   // If nothing on endStack, always ok to move
-  if(endStack.length == 0) {
+  if (endStack.length == 0) {
     return true;
   }
 
@@ -48,16 +48,26 @@ function isLegal(startStack, endStack) {
 }
 
 function checkForWin() {
-  for(var key in stacks) {
-    if(stacks[key].length == 4) {
+  for (var key in stacks) {
+    if (stacks[key].length == 4) {
       return true;
     }
   }
   return false;
 }
+//
+// function whoWon(){
+//     if(stacks[b].length == 4){
+// console.log("Stack b won")
+//   }else if{(stacks[c].length == 4)
+//   console.log("Stack c won")
+// }
+// else...
+
+// }
 
 function towersOfHanoi(startStack, endStack) {
-  if(isLegal(startStack, endStack)) {
+  if (isLegal(startStack, endStack)) {
     movePiece(startStack, endStack);
     checkForWin();
   } else {
