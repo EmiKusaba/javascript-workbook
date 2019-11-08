@@ -55,6 +55,15 @@ function checkForWin() {
   }
   return false;
 }
+function checkWhoWon(){
+  if(stack[b].length == 4){
+    console.log("Stack B won!")
+  }
+  else if
+    (stack[c].length == 4){
+      console.log("Stack C won!")
+  }
+}
 
 function towersOfHanoi(startStack, endStack) {
   if(isLegal(startStack, endStack)) {
