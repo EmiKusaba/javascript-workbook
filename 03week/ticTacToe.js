@@ -144,6 +144,17 @@ if (typeof describe === 'function') {
       assert.deepEqual(board, [['O', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' ']]);
     });
     it('should check for vertical wins', () => {
+
+      board = [ ['O', 'X', 'O'], ['O', 'X', 'O'], ['O', 'X', 'O'] ];
+      assert.equal(verticalWin(), true);
+    });
+    it('should check for horizontal wins', () => {
+      board = [ ['X', 'X', 'X'], [' O', 'X', 'O'], ['O', 'X', 'O'] ];
+      assert.equal(horizontalWin(), true);
+    });
+    it('should check for diagonal wins', () => {
+      board = [ ['X', 'O', 'X'], ['X', 'X', 'O'], ['O', 'X', 'X'] ];
+
       board = [[' ', 'X', ' '], [' ', 'X', ' '], [' ', 'X', ' ']];
       assert.equal(verticalWin(), true);
     });
@@ -153,6 +164,7 @@ if (typeof describe === 'function') {
     });
     it('should check for diagonal wins', () => {
       board = [['X', ' ', ' '], [' ', 'X', ' '], [' ', ' ', 'X']];
+ 
       assert.equal(diagonalWin(), true);
     });
     it('should detect a win', () => {
