@@ -19,24 +19,67 @@ function printBoard() {
 
 function generateSolution() {
   for (let i = 0; i < 4; i++) {
-    const randomIndex = getRandomInt(0, letters.length);
-    solution += letters[randomIndex];
+  const randomIndex = getRandomInt(0, letters.length);
+  solution += letters[randomIndex];
   }
+  }
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+function generateHint(guess) {
+  const solutionArray = solution.split('');
+  // should be [ 'null', 'null', 'null', 'd' ]
+  
+  const guessArray = guess.split('');
+  // if guess was 'abdc'
+  // should be [ 'a', 'b', 'd', 'c' ]
+
+  let redPegs = 0;
+  let whitePegs = 0;
+
+  // checking for redPegs
+  for (let i = 0; i < solutionArray.length; i++) {
+    if (solutionArray[i] === guessArray[i]) {
+      redPegs++;
+      solutionArray[i] = null;
+    }
+  }
+
+  let targetIndex = null;
+  // checking for whitePegs
+  for (let i = 0; i < guessArray.length; i++) {
+    targetIndex = solutionArray.indexOf(guessArray[i]);
+
+    if (targetIndex > -1) {
+      whitePegs++;
+      solutionArray[targetIndex] = null;
+    }
+  }
+
+  // return a string representation of redPegs and whitePegs variables
+  return `${redPegs}-${whitePegs}`;
+  // return redPegs + '-' + whitePegs;
 }
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
 
-function generateHint() {
-  // your code here
-}
+
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  // solution = 'abcda'; // Comment this out to generate a random solution
   // your code here
-}
+  if (solution === guess) {
+    return "You guessed it!";
+  }
+  var hint = generateHint(guess);
+  board.push(guess + " " + hint);
+  if (board.length >= 10) {
+    return "You ran out of turns!";
+  }
 
+  return "Guess again!";
+}
 
 function getPrompt() {
   rl.question('guess: ', (guess) => {
@@ -45,6 +88,18 @@ function getPrompt() {
     getPrompt();
   });
 }
+
+
+
+
+
+// function getPrompt() {
+//   rl.question('guess: ', (guess) => {
+//     mastermind(guess);
+//     printBoard();
+//     getPrompt();
+//   });
+// }
 
 // Tests
 
