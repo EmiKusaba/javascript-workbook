@@ -7,15 +7,59 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-
-function Checker() {
-  // Your code here
+//my code
+function Checker(color) {
+  this.color = color;
+  if (this.color === 'white') {
+    this.symbol = String.fromCharCode(0x125CB);
+  }
+  else {
+    this.symbol = String.fromCharCode(0x125CF);
+  }
+  // this.symbol = something
 }
+  
 
 class Board {
-  constructor() {
-    this.grid = []
+  constructor(selectChecker) {
+      this.selectChecker = function(row, column) {
+    return this.grid[row][column];
+  };
+//     this.grid = [
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null],
+//     [null, null, null, null, null, null, null, null]
+// ]
+this.createCheckers = function() {
+    let whitePositions = [[0, 1], [0, 3], [0, 5], [0, 7],
+[1, 0], [1, 2], [1, 4], [1, 6],
+[2, 1], [2, 3], [2, 5], [2, 7]];
+    let blackPositions = [[5, 0], [5, 2], [5, 4], [5, 6],
+[6, 1], [6, 3], [6, 5], [6, 7],
+[7, 0], [7, 2], [7, 4], [7, 6]];
+  for (let i = 0; i <= 11; i++) {
+    // Place White Checker
+    let whiteChecker = new Checker('white');
+    this.checkers.push(whiteChecker);
+    let coordinate = whitePositions[i];
+    this.grid[coordinate[0]][coordinate[1]] = whiteChecker;
+
+    // Place Black checkers
+    let blackChecker = new Checker('black');
+    this.checkers.push(blackChecker);
+    let coordinate2 = blackPositions[i];
+    this.grid[coordinate2[0]][coordinate2[1]] = blackChecker;
   }
+  };
+  this.checkers = [];
+  this.grid = [];
+  }
+
   // method that creates an 8x8 array, filled with null values
   createGrid() {
     // loop to create the 8 rows
@@ -26,7 +70,8 @@ class Board {
         this.grid[row].push(null);
       }
     }
-  }
+  };
+
   viewGrid() {
     // add our column numbers
     let string = "  0 1 2 3 4 5 6 7\n";
@@ -76,6 +121,8 @@ function getPrompt() {
 
 const game = new Game();
 game.start();
+game.board.createCheckers();
+
 
 
 // Tests
