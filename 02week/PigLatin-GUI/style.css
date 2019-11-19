@@ -1,0 +1,172 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+/* layout =================== */
+
+.site__title,
+nav,
+section,
+.footer__content {
+  display: block;
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 60%;
+}
+
+header {
+  background: #a7e8f8;
+  border-bottom: 1px solid #0b0166;
+  padding: 20px 0 20px 0;
+  margin-bottom: 40px;
+}
+.image1{
+  width: 40%;
+  height: auto;
+}
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -100px;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+}
+
+.site__footer,
+.wrapper:after {
+  height: 100px;
+}
+
+
+.main__article {
+  width: 66.666666666%;
+  padding-left: 20px;
+  float: left;
+}
+
+.interest {
+  width: 33.333333333%;
+  padding: 20px;
+  float: right;
+}
+
+.site__footer {
+  background: #7e8e97;
+  border-top: 1px solid #2d3438;
+}
+
+.footer__content {
+  padding: 20px;
+  color: #2d3438;
+}
+/* typography =============== */
+
+.site__title {
+  color: #0b0166;
+  font-size: 3rem;
+  font-family: 'Shrikhand', cursive;
+  font-weight: 200;
+  max-width: 576px;
+  padding-left: 20px
+}
+
+.main__title {
+  color: #0b0166;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+
+.main__article {
+  font-size: 1rem;
+  line-height: 24px;
+  font-family: georgia, serif;
+}
+/* content =================== */
+/* form ====================== */
+
+#result {
+  display: none;
+}
+
+.main__form {
+  padding: 40px;
+  border: 1px solid #0b0166;
+  border-radius: 4px;
+}
+
+.form__group {
+  padding: 0 0 20px 0;
+}
+
+.form__label {
+  font-size: 1.2em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .05em;
+}
+
+.form__input {
+  margin-top: 1em;
+  padding: 15px;
+  width: 90%;
+  border-radius: 4px;
+  font-size: 1.2em;
+  border: 1px solid #d6cac2;
+}
+
+.form__btn {
+  background: #f5f2f0;
+  border-radius: 4px;
+  border: 1px solid #d6cac2;
+  color: #b7a294;
+  padding: 20px;
+  font-size: 1em;
+}
+
+.main__result {
+  font-size: 1.5rem;
+  color: #bb0f00;
+}
+
+.main__result p:before {
+  content: ">> ";
+}
+/* ================== picture gallery */
+
+.gallery {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery__picture {
+  list-style: none;
+}
+
+.gallery__picture img {
+  width: 45%;
+  margin: 0 5% 1em 0;
+  float: left;
+}
+/* clear fix ================ */
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
