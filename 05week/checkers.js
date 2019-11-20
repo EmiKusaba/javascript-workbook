@@ -20,6 +20,10 @@ function Checker(color) {
 }
 
 
+
+// var board = new Board();
+// board.killChecker()
+
 class Board {
   constructor() {
     this.selectChecker = function (row, column) {
@@ -56,10 +60,21 @@ class Board {
         this.grid[coordinate2[0]][coordinate2[1]] = blackChecker;
       }
     };
+
     this.checkers = [];
     this.grid = [];
     //mycode here 
 
+  }
+
+  killChecker(position) {
+    let kill = selectChecker(position[0],position[1])
+    let index = this.checkers.indexOf(checker)
+    this.checkers.splice(index,1)
+    this.grid[position[0]][position[1]] = null;
+    if(kill){
+      return true
+    }
   }
 
   // method that creates an 8x8 array, filled with null values
@@ -109,15 +124,25 @@ class Game {
   }
 
   moveChecker(start, end) {
-    var startRow = start[0];
-    var startCol = start[1];
-    var endRow = end[0];
-    var endCol = end[1];
+    var startRow = parseInt(start[0]);
+    var startCol = parseInt(start[1]);
+    var endRow = parseInt(end[0]);
+    var endCol = parseInt(end[1]);
     // Get checker at start position
     var checker = this.board.selectChecker(startRow, startCol);
     // Move checker to end position
     this.board.grid[startRow][startCol] = null;
     this.board.grid[endRow][endCol] = checker;
+
+    if(Math.abs(endRow-startRow) === 2){
+      
+      let killrow = endRow-startRow>0 ? startRow + 1: endRow + 1
+      let killcol = endCol-startCol>0 ? startCol + 1: endCol + 1
+      this.board.grid[killrow][killcol] = null;
+      this.board.checkers.pop()
+
+    }
+
   }
 
   start() {
