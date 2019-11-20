@@ -13,6 +13,7 @@ let jobTypes = {
 //Build a class for CrewMember
 class CrewMember {
   constructor(name, job, specialSkill) {
+    
     this.name = name;
     this.job = job;
     this.specialSkill = specialSkill;
