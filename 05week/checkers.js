@@ -7,7 +7,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-//my code
+
 function Checker(color) {
   this.color = color;
   if (this.color === 'white') {
@@ -18,46 +18,48 @@ function Checker(color) {
   }
   // this.symbol = something
 }
-  
+
 
 class Board {
-  constructor(selectChecker) {
-      this.selectChecker = function(row, column) {
-    return this.grid[row][column];
-  };
-//     this.grid = [
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null],
-//     [null, null, null, null, null, null, null, null]
-// ]
-this.createCheckers = function() {
-    let whitePositions = [[0, 1], [0, 3], [0, 5], [0, 7],
-[1, 0], [1, 2], [1, 4], [1, 6],
-[2, 1], [2, 3], [2, 5], [2, 7]];
-    let blackPositions = [[5, 0], [5, 2], [5, 4], [5, 6],
-[6, 1], [6, 3], [6, 5], [6, 7],
-[7, 0], [7, 2], [7, 4], [7, 6]];
-  for (let i = 0; i <= 11; i++) {
-    // Place White Checker
-    let whiteChecker = new Checker('white');
-    this.checkers.push(whiteChecker);
-    let coordinate = whitePositions[i];
-    this.grid[coordinate[0]][coordinate[1]] = whiteChecker;
+  constructor() {
+    this.selectChecker = function (row, column) {
+      return this.grid[row][column];
+    };
+    //     this.grid = [
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null],
+    //     [null, null, null, null, null, null, null, null]
+    // ]
+    this.createCheckers = function () {
+      let whitePositions = [[0, 1], [0, 3], [0, 5], [0, 7],
+      [1, 0], [1, 2], [1, 4], [1, 6],
+      [2, 1], [2, 3], [2, 5], [2, 7]];
+      let blackPositions = [[5, 0], [5, 2], [5, 4], [5, 6],
+      [6, 1], [6, 3], [6, 5], [6, 7],
+      [7, 0], [7, 2], [7, 4], [7, 6]];
+      for (let i = 0; i <= 11; i++) {
+        // Place White Checker
+        let whiteChecker = new Checker('white');
+        this.checkers.push(whiteChecker);
+        let coordinate = whitePositions[i];
+        this.grid[coordinate[0]][coordinate[1]] = whiteChecker;
 
-    // Place Black checkers
-    let blackChecker = new Checker('black');
-    this.checkers.push(blackChecker);
-    let coordinate2 = blackPositions[i];
-    this.grid[coordinate2[0]][coordinate2[1]] = blackChecker;
-  }
-  };
-  this.checkers = [];
-  this.grid = [];
+        // Place Black checkers
+        let blackChecker = new Checker('black');
+        this.checkers.push(blackChecker);
+        let coordinate2 = blackPositions[i];
+        this.grid[coordinate2[0]][coordinate2[1]] = blackChecker;
+      }
+    };
+    this.checkers = [];
+    this.grid = [];
+    //mycode here 
+
   }
 
   // method that creates an 8x8 array, filled with null values
@@ -101,9 +103,23 @@ this.createCheckers = function() {
 }
 
 class Game {
+
   constructor() {
-    this.board = new Board;
+    this.board = new Board();
   }
+
+  moveChecker(start, end) {
+    var startRow = start[0];
+    var startCol = start[1];
+    var endRow = end[0];
+    var endCol = end[1];
+    // Get checker at start position
+    var checker = this.board.selectChecker(startRow, startCol);
+    // Move checker to end position
+    this.board.grid[startRow][startCol] = null;
+    this.board.grid[endRow][endCol] = checker;
+  }
+
   start() {
     this.board.createGrid();
   }
