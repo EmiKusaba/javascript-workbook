@@ -30,7 +30,7 @@ function isLegal(startStack, endStack) {
   endStack = stacks[endStack];
 
   // If startStack is empty, can't move from it
-  if(startStack.length == 0) {
+  if (startStack.length == 0) {
     return false;
   }
 
@@ -38,7 +38,7 @@ function isLegal(startStack, endStack) {
   // last piece on endStack
 
   // If nothing on endStack, always ok to move
-  if(endStack.length == 0) {
+  if (endStack.length == 0) {
     return true;
   }
 
@@ -48,8 +48,8 @@ function isLegal(startStack, endStack) {
 }
 
 function checkForWin() {
-  for(var key in stacks) {
-    if(stacks[key].length == 4) {
+  for (var key in stacks) {
+    if (stacks[key].length == 4) {
       console.log("Tower " + key + "won!");
       return true;
     }
@@ -58,7 +58,7 @@ function checkForWin() {
 }
 
 function towersOfHanoi(startStack, endStack) {
-  if(isLegal(startStack, endStack)) {
+  if (isLegal(startStack, endStack)) {
     movePiece(startStack, endStack);
     checkForWin();
   } else {
@@ -84,8 +84,8 @@ if (typeof describe === 'function') {
 
   describe('#towersOfHanoi()', () => {
     it('should be able to move a block', () => {
-      towersOfHanoi('a', 'b');
-      assert.deepEqual(stacks, { a: [4, 3, 2], b: [1], c: [] });
+      towersOfHanoi('a', 'c');
+      assert.deepEqual(stacks, { a: [4, 3, 2], b: [], c: [1] });
     });
   });
 
@@ -115,6 +115,45 @@ if (typeof describe === 'function') {
       assert.equal(checkForWin(), false);
     });
   });
+  // My unit tests
+  describe('#movePiece()', () => {
+    it ('piece should be moved', () => {
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      movePiece('a', 'b')
+      assert.deepEqual(stacks, { a: [4, 3, 2], b: [1], c: [] })
+    });
+  });
+  describe('#isLegal()', () => {
+    it('should not allow an illegal move', () => {
+      stacks = {
+        a: [4, 3, 2],
+        b: [],
+        c: [1]
+      };
+      assert.equal(isLegal('a', 'c'), false);
+    });
+    it('should allow a legal move', () => {
+      stacks = {
+        a: [4, 3, 2, 1],
+        b: [],
+        c: []
+      };
+      assert.equal(isLegal('a', 'c'), true);
+    });
+  });
+  describe('#checkForWin()', () => {
+    it('should detect a win', () => {
+      stacks = { a: [], b: [], c: [4, 3, 2, 1] };
+      assert.equal(checkForWin(), true);
+      stacks = { a: [], b: [1], c: [4, 3, 2] };
+      assert.equal(checkForWin(), false);
+    });
+  });
+
 
 } else {
 
