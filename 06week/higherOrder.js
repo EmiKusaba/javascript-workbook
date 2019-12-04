@@ -52,14 +52,12 @@ function every(arr, callback) {
 
 function reduce(arr, callback) {
   // Your code here
-  // for (let i = 0; i < arr.length; i++) {
-  //   if (callback(arr[i])) {
-  //     return true;
-  //   }
-  // }
-  // return false;
+  let result = arr.reduce(callback);
+  for (let i = 0; i < arr.length; i++){
+    return result;
+  }
 }
- 
+
 
   if (typeof describe === 'function') {
 
