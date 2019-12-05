@@ -5,8 +5,8 @@ function isRamp(num) {
   let last = 0;
   return numArray.every((element) => {
     const elementNum = Number(element);
-    const isGTE = element >= last;
-    last = element;
+    const isGTE = elementNum >= last;
+    last = elementNum;
     return isGTE;
   });
 }
