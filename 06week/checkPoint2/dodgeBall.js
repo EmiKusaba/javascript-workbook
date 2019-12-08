@@ -1,3 +1,5 @@
+let assert = require('assert');
+
 const arrOfPeople = [
   {
     id: 1,
@@ -251,13 +253,19 @@ const makeBluePlayer = id => {
 if (typeof describe === 'function'){
   describe('DodgeBallPlayer', function(){
     it('should have a id, name, age, skillSet, placeBorn, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience', function(){
-      var player1 = new DodgeBallPlayer(1, 'Charles Young', 'chemistry');
-      assert.equal(crewMember1.name, 'Rick Martinez');
-      assert.equal(crewMember1.job, 'pilot');
-      assert.equal(crewMember1.specialSkill, 'chemistry');
-      assert.equal(crewMember1.ship, null);
+      var player1 = new DodgeBallPlayer(1, 'Charles Young', 55, 'welding', 'Austin', true, true, true, true, 10);
+      assert.equal(player1.id, 1);
+      assert.equal(player1.name, 'Charles Young');
+      assert.equal(player1.age, 55);
+      assert.equal(player1.skillSet, 'welding');
+      assert.equal(player1.placeBorn, 'Austin');
+      assert.equal(player1.canThrowBall, true);
+      assert.equal(player1.canDodgeBall, true);
+      assert.equal(player1.hasPaid, true);
+      assert.equal(player1.isHealthy, true);
+      assert.equal(player1.yearsExperience, 10);
     });
-
+   
     it('can enter a ship', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
       let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
