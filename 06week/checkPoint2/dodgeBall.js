@@ -246,13 +246,13 @@ const makeBluePlayer = id => {
   li.appendChild(document.createTextNode(newPlayer.name + " " + "mascot = " + newPlayer.mascot))
   li.style.border = "1px solid blue"
   listElement.append(li)
-  
+
 };
 
 //test
-if (typeof describe === 'function'){
-  describe('DodgeBallPlayer', function(){
-    it('should have a id, name, age, skillSet, placeBorn, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience', function(){
+if (typeof describe === 'function') {
+  describe('DodgeBallPlayer', function () {
+    it('should have a id, name, age, skillSet, placeBorn, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience', function () {
       var player1 = new DodgeBallPlayer(1, 'Charles Young', 55, 'welding', 'Austin', true, true, true, true, 10);
       assert.equal(player1.id, 1);
       assert.equal(player1.name, 'Charles Young');
@@ -265,39 +265,42 @@ if (typeof describe === 'function'){
       assert.equal(player1.isHealthy, true);
       assert.equal(player1.yearsExperience, 10);
     });
-   
-    it('can enter a ship', function(){
-      let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-      let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-      crewMember1.enterShip(mav);
-      assert.equal(crewMember1.ship, mav);
-      assert.equal(mav.crew.length, 1);
-      assert.equal(mav.crew[0], crewMember1);
+  });
+
+  describe('MakeRedTeam', function () {
+    it('should have a id, name, age, skillSet, placeBorn, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience, mascot, teamcolor', function () {
+      let redTeam1 = new RedTeammate(2, 'Judy Twilight', 35, 'fishing', 'Louisville, Kentucky', true, true, true, true, 10, 'Tiger', 'Red');
+      assert.equal(redTeam1.id, 2);
+      assert.equal(redTeam1.name, "Judy Twilight");
+      assert.equal(redTeam1.age, 35);
+      assert.equal(redTeam1.skillSet, "fishing");
+      assert.equal(redTeam1.placeBorn, "Louisville, Kentucky");
+      assert.equal(redTeam1.canThrowBall, true);
+      assert.equal(redTeam1.canDodgeBall, true);
+      assert.equal(redTeam1.hasPaid, true);
+      assert.equal(redTeam1.isHealthy, true);
+      assert.equal(redTeam1.yearsExperience, 10);
+      assert.equal(redTeam1.mascot, "Tiger");
+      assert.equal(redTeam1.teamcolor, "Red");
+
     });
   });
 
-  describe('Ship', function(){
-    it('should have a name, a type, an ability and an empty crew upon instantiation', function(){
-      let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-      assert.equal(mav.name, 'Mars Ascent Vehicle');
-      assert.equal(mav.type, 'MAV');
-      assert.equal(mav.ability, 'Ascend into low orbit');
-      assert.equal(mav.crew.length, 0);
-    });
-
-    it('can return a mission statement correctly', function(){
-      let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-      let crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
-      let hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
-      let crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
-      assert.equal(mav.missionStatement(), "Can't perform a mission yet.");
-      assert.equal(hermes.missionStatement(), "Can't perform a mission yet.");
-
-      crewMember1.enterShip(mav);
-      assert.equal(mav.missionStatement(), "Ascend into low orbit");
-
-      crewMember2.enterShip(hermes);
-      assert.equal(hermes.missionStatement(), "Interplanetary Space Travel");
+  describe('MakeBlueTeam', function () {
+    it('should have a id, name, age, skillSet, placeBorn, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExperience, mascot, teamcolor', function () {
+      let blueTeam1 = new BlueTeammate(3, 'Argo Khon', 15, 'skating', 'Missouri', true, false, true, true, 1, 'Dog', 'blue');
+      assert.equal(blueTeam1.id, 3);
+      assert.equal(blueTeam1.name, "Argo Khon");
+      assert.equal(blueTeam1.age, 15);
+      assert.equal(blueTeam1.skillSet, "skating");
+      assert.equal(blueTeam1.placeBorn, "Missouri");
+      assert.equal(blueTeam1.canThrowBall, true);
+      assert.equal(blueTeam1.canDodgeBall, false);
+      assert.equal(blueTeam1.hasPaid, true);
+      assert.equal(blueTeam1.isHealthy, true);
+      assert.equal(blueTeam1.yearsExperience, 1);
+      assert.equal(blueTeam1.mascot, "Dog");
+      assert.equal(blueTeam1.teamcolor, "blue");
     });
   });
 }
