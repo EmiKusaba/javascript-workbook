@@ -28,15 +28,46 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
+function generateHint(guess) {
   // your code here
+  var guessArray = guess.split("");
+  var solutionArray = solution.split("");
+
+  var correctLetterLocations = 0;
+  for (var i = 0; i < solutionArray.length; ++i) {
+    if (solutionArray[i] === guessArray[i]) {
+      correctLetterLocations++;
+      solutionArray[i] = null;
+    }
+  }
+
+  var correctLetters = 0;
+  for (var i = 0; i < solutionArray.length; ++i) {
+    var guessValue = guessArray[i];
+    var index = solutionArray.indexOf(guessValue);
+    if (index > -1) {
+      correctLetters++;
+      solutionArray[index] = null;
+    }
+  }
+
+  return correctLetterLocations + "-" + correctLetters;
 }
 
 function mastermind(guess) {
-  solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
-}
+  if (solution === guess) {
+    return "You guessed it!";
+  }
+  var hint = generateHint(guess);
+  board.push(guess + " " + hint);
 
+  if (board.length >= 10) {
+    return "You ran out of turns!";
+  }
+
+  return "Guess again!";
+}
 
 function getPrompt() {
   rl.question('guess: ', (guess) => {
