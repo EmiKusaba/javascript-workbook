@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+    <!--bootstrap & style links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="ttt.css">
+    <!-- link to JavaScript code -->
+    <script src="ttt.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Welcome to Tic Tac Toe</h1>
+        <p>Get ready to play!</p>
+        <!-- uses the built-in onclick attribute to call the resetBoard function -->
+        <button onclick="resetBoard()" type="button" class="btn btn-primary btn-lg" name="button">Restart</button>
+      </div>
+
+      <table align="center">
+        <tr>
+          <!-- Each table-data (td) has an id that matches it's position in the array or arrays [0][1] -->
+          <td id='0-0' onclick="handleClick(this)" ></td>
+          <td id='0-1' onclick="handleClick(this)" ></td>
+          <td id='0-2' onclick="handleClick(this)" ></td>
+        </tr>
+        <tr>
+          <!-- onclick calls a function called handleClick and passes itself to it("this") -->
+          <td id='1-0' onclick="handleClick(this)" ></td>
+          <td id='1-1' onclick="handleClick(this)" ></td>
+          <td id='1-2' onclick="handleClick(this)" ></td>
+        </tr>
+        <tr>
+          <td id='2-0' onclick="handleClick(this)" ></td>
+          <td id='2-1' onclick="handleClick(this)" ></td>
+          <td id='2-2' onclick="handleClick(this)" ></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
