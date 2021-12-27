@@ -10,8 +10,8 @@ const rl = readline.createInterface({
 let rockPaperScissors = (user1, user2) => {
 
   // Write code here
-  let user1 = user1.trim().toLowerCase()
-  let user2 = user2.trim().toLowerCase()
+  user1 = user1.trim().toLowerCase()
+  user2 = user2.trim().toLowerCase()
 
   if(user1 === user2 ){
     return "It's a tie!";
@@ -25,13 +25,13 @@ let rockPaperScissors = (user1, user2) => {
   else if (user1 === 'scissors' && user2 === 'paper'){
     return "user one wins!"
   }
-  else if (user1 === 'scissors' && user2 === 'paper'){
+  else if (user1 === 'scissors' && user2 === 'rock'){
     return "user two wins!"
   }
-  else if (user1 === 'rock' && user2 === 'scissors'){
+  else if (user1 === 'rock' && user2 === 'paper'){
     return "user two wins!"
   }
-  else if (user1 === 'paper' && user2 === 'rock'){
+  else if (user1 === 'paper' && user2 === 'scissors'){
     return "user two wins!"
   }
   }
